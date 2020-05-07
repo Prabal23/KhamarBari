@@ -1624,7 +1624,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   },
                                                   child: Container(
                                                     child: new Text(
-                                                      'Dairy',
+                                                      'Dairy Insemination',
                                                       style: TextStyle(
                                                           color: Colors.black54,
                                                           fontSize: 17.0),
