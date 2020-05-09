@@ -23,9 +23,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _children = [
-    new ProfilePage(),
-    new HistoryPage(),
-    new CommentPage(),
+    ProfilePage(),
+    HistoryPage(),
+    CommentPage(),
   ];
 
   @override

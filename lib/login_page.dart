@@ -283,6 +283,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             child: Center(
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Form(
                   key: formKey,
                   child: Column(

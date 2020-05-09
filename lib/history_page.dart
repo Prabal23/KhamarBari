@@ -13,15 +13,16 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: DefaultTabController(
         length: 2,
         child: SafeArea(
           child: new Column(
             children: <Widget>[
               new Container(
-                //constraints: BoxConstraints(maxHeight: 150.0),
+                color: Colors.white,
                 child: new Material(
-                  //color: header,
+                  color: Colors.white,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(0),
@@ -95,6 +96,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           Expanded(
                             child: Container(
                                 child: ListView.separated(
+                              physics: BouncingScrollPhysics(),
                               itemCount: 10,
                               itemBuilder: (context, index) {
                                 return ListTile(
@@ -109,23 +111,19 @@ class _HistoryPageState extends State<HistoryPage> {
                                       children: <Widget>[
                                         Container(
                                           margin: EdgeInsets.only(top: 5),
-                                          child: Hero(
-                                            tag: 'hero',
-                                            child: Container(
-                                              padding: EdgeInsets.all(0.0),
-                                              child: CircleAvatar(
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                backgroundImage:
-                                                    ExactAssetImage(
-                                                        'assets/person.png'),
-                                                minRadius: 15,
-                                                maxRadius: 15,
-                                                //radius: 68.0,
-                                                // child: Image.asset(
-                                                //     'assets/person.png',
-                                                //     fit: BoxFit.cover,),
-                                              ),
+                                          child: Container(
+                                            padding: EdgeInsets.all(0.0),
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              backgroundImage: ExactAssetImage(
+                                                  'assets/person.png'),
+                                              minRadius: 15,
+                                              maxRadius: 15,
+                                              //radius: 68.0,
+                                              // child: Image.asset(
+                                              //     'assets/person.png',
+                                              //     fit: BoxFit.cover,),
                                             ),
                                           ),
                                         ),
@@ -263,6 +261,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           Expanded(
                             child: Container(
                                 child: ListView.separated(
+                              physics: BouncingScrollPhysics(),
                               itemCount: 10,
                               itemBuilder: (context, index) {
                                 return ListTile(
@@ -277,24 +276,21 @@ class _HistoryPageState extends State<HistoryPage> {
                                       children: <Widget>[
                                         Container(
                                           margin: EdgeInsets.only(top: 5),
-                                          child: Hero(
-                                            tag: 'hero',
-                                            child: Container(
-                                              padding: EdgeInsets.all(0.0),
-                                              child: CircleAvatar(
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                backgroundImage:
-                                                    ExactAssetImage(index % 2 == 0
-                                                        ?'assets/cow.png':
-                                                        'assets/rooster.png'),
-                                                minRadius: 12,
-                                                maxRadius: 12,
-                                                //radius: 68.0,
-                                                // child: Image.asset(
-                                                //     'assets/person.png',
-                                                //     fit: BoxFit.cover,),
-                                              ),
+                                          child: Container(
+                                            padding: EdgeInsets.all(0.0),
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              backgroundImage: ExactAssetImage(
+                                                  index % 2 == 0
+                                                      ? 'assets/cow.png'
+                                                      : 'assets/rooster.png'),
+                                              minRadius: 12,
+                                              maxRadius: 12,
+                                              //radius: 68.0,
+                                              // child: Image.asset(
+                                              //     'assets/person.png',
+                                              //     fit: BoxFit.cover,),
                                             ),
                                           ),
                                         ),
@@ -364,7 +360,8 @@ class _HistoryPageState extends State<HistoryPage> {
                                                 MainAxisAlignment.center,
                                             children: <Widget>[
                                               Column(
-                                                crossAxisAlignment: CrossAxisAlignment.end,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
                                                 children: <Widget>[
                                                   Text(
                                                     "Total visit",
@@ -375,7 +372,8 @@ class _HistoryPageState extends State<HistoryPage> {
                                                         color: Colors.black54),
                                                   ),
                                                   Container(
-                                                    margin: EdgeInsets.only(top: 3),
+                                                    margin:
+                                                        EdgeInsets.only(top: 3),
                                                     padding: EdgeInsets.all(5),
                                                     decoration: BoxDecoration(
                                                         color: index % 2 != 0

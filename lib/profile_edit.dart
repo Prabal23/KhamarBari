@@ -6,6 +6,7 @@ import 'package:login_page/home_page.dart';
 import 'package:login_page/login_page.dart';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
+import 'package:login_page/main.dart';
 
 class ProfilePage extends StatefulWidget {
   static String tag = 'register-page';
@@ -28,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String upazila = "", district = "", service = "", poultries = "";
   var dd, finalDate;
   DateTime _date = DateTime.now();
-  bool chkVal = false;
+  bool chkVal = false, isBalance = false;
   Future<File> fileImage;
 
   Future<Null> _asyncConfirmDialog() async {
@@ -612,29 +613,13 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       //key: scaffoldKey,
       backgroundColor: Colors.white,
-      // body: Center(
-      //   child: ListView(
-      //     shrinkWrap: true,
-      //     padding: EdgeInsets.only(left: 24.0, right: 24.0),
-      //     children: <Widget>[
-      //       logo,
-      //       SizedBox(height: 48.0),
-      //       email,
-      //       SizedBox(height: 8.0),
-      //       password,
-      //       SizedBox(height: 24.0),
-      //       loginButton,
-      //       forgotLabel
-      //     ],
-      //   ),
-      // ),
-
       body: Container(
         child: Padding(
           padding: const EdgeInsets.only(left: 24.0, right: 24.0),
           child: Container(
             child: Center(
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -644,20 +629,151 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: <Widget>[
                       //pic(),
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(top: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.only(top: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "View & Edit Profile",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 16),
+                              ),
+                              Container(
+                                width: 70,
+                                child: Divider(
+                                  color: Color(0xFF1B8E99),
+                                ),
+                              )
+                            ],
+                          )),
+                      SizedBox(height: 5.0),
+                      Container(
+                        margin: EdgeInsets.only(top: isBalance ? 0 : 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text("View & Edit Profile", style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 16),),
                             Container(
-                                      width: 70,
-                                      child: Divider(
-                                        color: Color(0xFF1B8E99),
-                                      ),
-                                    )
+                              margin: EdgeInsets.only(right: 0),
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(left: 0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text("Doctor/Consultant",
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.bold)),
+                                        Container(
+                                            height: 20,
+                                            width: 20,
+                                            margin: EdgeInsets.only(left: 5),
+                                            child: Image.asset(
+                                              'assets/transportation.png',
+                                              fit: BoxFit.cover,
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Row(
+                                children: <Widget>[
+                                  isBalance == false
+                                      ? Container()
+                                      : Text(
+                                          "Balance : ",
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 12),
+                                        ),
+                                  isBalance == false
+                                      ? Container()
+                                      : SizedBox(width: 5),
+                                  isBalance == false
+                                      ? Container()
+                                      : Container(
+                                          height: 12,
+                                          child:
+                                              Image.asset('assets/taka.png')),
+                                  SizedBox(width: 3),
+                                  isBalance == false
+                                      ? Container()
+                                      : Text(
+                                          "1085.00",
+                                          style: TextStyle(
+                                              color: header,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12),
+                                        ),
+                                  isBalance == false
+                                      ? Container()
+                                      : GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              isBalance = false;
+                                            });
+                                          },
+                                          child: Container(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Icon(
+                                                Icons.close,
+                                                color: Colors.grey,
+                                                size: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                  isBalance == true
+                                      ? Container()
+                                      : GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              isBalance = true;
+                                            });
+                                          },
+                                          child: Container(
+                                              padding: EdgeInsets.all(5),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  border: Border.all(
+                                                      width: 0.4,
+                                                      color: Colors.grey),
+                                                  color: Colors.white),
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                      height: 12,
+                                                      child: Image.asset(
+                                                          'assets/taka.png')),
+                                                  SizedBox(width: 5),
+                                                  Text(
+                                                    "Check Balance",
+                                                    style: TextStyle(
+                                                        color: header,
+                                                        fontSize: 11,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ],
+                                              )),
+                                        )
+                                ],
+                              ),
+                            ),
                           ],
-                        )),
+                        ),
+                      ),
                       SizedBox(height: 45.0),
                       new FutureBuilder<File>(
                         future: fileImage,

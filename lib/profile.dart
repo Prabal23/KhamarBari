@@ -51,6 +51,7 @@ class _ProfileState extends State<Profile> {
       ),
       child: Container(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: <Widget>[
               new SizedBox(

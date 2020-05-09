@@ -9,6 +9,7 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xFF1B8E99)),
         //automaticallyImplyLeading: false,
@@ -70,6 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
             child: Container(
               //height: 500,
               child: ListView.separated(
+                physics: BouncingScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return ListTile(
@@ -88,7 +90,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
                                 backgroundImage:
-                                    ExactAssetImage('assets/person.png'),
+                                    AssetImage('assets/person.png'),
                                 minRadius: 21,
                                 maxRadius: 21,
                                 //radius: 68.0,
@@ -189,9 +191,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          index % 2 == 0
-                                              ? "69%"
-                                              : "88%",
+                                          index % 2 == 0 ? "69%" : "88%",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 11,

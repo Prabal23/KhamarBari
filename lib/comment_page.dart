@@ -381,6 +381,7 @@ class _CommentPageState extends State<CommentPage> {
           child: Container(
             child: Center(
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Form(
                   key: formKey,
                   child: Column(
