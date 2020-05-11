@@ -12,7 +12,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
-  int section = 1;
   String _email;
   String _password, userType = "Farmer";
 
@@ -21,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (form.validate()) {
       form.save();
-      Navigator.of(context).pushNamed(HomePage.tag);
+     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(section)));
       // Email & password matched our validation rules
       // and are saved to _email and _password fields.
       _performLogin();
@@ -103,10 +102,10 @@ class _LoginPageState extends State<LoginPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: _submit,
-        // onPressed: () {
-        //   Navigator.of(context).pushNamed(HomePage.tag);
-        // },
+        //onPressed: _submit,
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(section)));
+        },
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         color: Color(0xFF1B8E99),
         child: Text('Sign In', style: TextStyle(color: Colors.white)),

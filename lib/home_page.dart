@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/comment_page.dart';
+import 'package:login_page/doctor_list.dart';
 import 'package:login_page/history_page.dart';
 import 'package:login_page/login_page.dart';
 import 'package:login_page/notification_page.dart';
@@ -8,7 +9,9 @@ import 'package:login_page/profile_edit.dart';
 import 'package:login_page/reg_page.dart';
 
 class HomePage extends StatefulWidget {
-  static String tag = 'home-page';
+  final section;
+  HomePage(this.section);
+
   @override
   _HomePageState createState() => new _HomePageState();
 }
@@ -25,6 +28,13 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [
     ProfilePage(),
     HistoryPage(),
+    CommentPage(),
+  ];
+
+  final List<Widget> _children1 = [
+    ProfilePage(),
+    HistoryPage(),
+    DoctorListPage(),
     CommentPage(),
   ];
 
@@ -71,7 +81,10 @@ class _HomePageState extends State<HomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationPage()));
                 },
                 child: Container(
                   margin: EdgeInsets.only(right: 5),
@@ -101,55 +114,102 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: _children[_currentIndex],
+      body: widget.section == 1
+          ? _children1[_currentIndex]
+          : _children[_currentIndex],
       //body: body,
-      bottomNavigationBar: new Theme(
+      bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
             // sets the background color of the `BottomNavigationBar`
             canvasColor: Colors.white,
             //backgroundColor: Colors.lightBlue,
             // sets the active color of the `BottomNavigationBar` if `Brightness` is light
-            primaryColor: Color(0xFF1B8E99),
+            primaryColor:
+                widget.section == 1 ? Color(0xFF1B8E99) : Color(0xFF1B8E99),
             //disabledColor: Colors.blue,
-            textTheme: Theme.of(context)
-                .textTheme
-                .copyWith(caption: new TextStyle(color: Colors.grey))),
+            textTheme: Theme.of(context).textTheme.copyWith(
+                caption: new TextStyle(
+                    color: widget.section == 1 ? Colors.grey : Colors.grey))),
         child: new BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           onTap: onTabTapped,
           currentIndex:
               _currentIndex, // this will be set when a new tab is tapped
-          items: [
-            BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.person_outline,
-                size: 19,
-              ),
-              title: new Text(
-                'Profile',
-                style: TextStyle(fontSize: 12),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.hourglass_empty,
-                size: 19,
-              ),
-              title: new Text(
-                'View History',
-                style: TextStyle(fontSize: 12),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.chat_bubble_outline,
-                size: 19,
-              ),
-              title: Text(
-                'Comment',
-                style: TextStyle(fontSize: 12),
-              ),
-            )
-          ],
+          items: widget.section == 1
+              ? [
+                  BottomNavigationBarItem(
+                    icon: new Icon(
+                      Icons.person_outline,
+                      size: 19,
+                    ),
+                    title: new Text(
+                      'Profile',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: new Icon(
+                      Icons.hourglass_empty,
+                      size: 19,
+                    ),
+                    title: new Text(
+                      'Account History',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.list,
+                      size: 19,
+                    ),
+                    title: Text(
+                      "Doctor's List",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.chat_bubble_outline,
+                      size: 19,
+                    ),
+                    title: Text(
+                      'Comment',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  )
+                ]
+              : [
+                  BottomNavigationBarItem(
+                    icon: new Icon(
+                      Icons.person_outline,
+                      size: 19,
+                    ),
+                    title: new Text(
+                      'Profile',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: new Icon(
+                      Icons.hourglass_empty,
+                      size: 19,
+                    ),
+                    title: new Text(
+                      'View History',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.chat_bubble_outline,
+                      size: 19,
+                    ),
+                    title: Text(
+                      'Comment',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  )
+                ],
         ),
       ),
     );
