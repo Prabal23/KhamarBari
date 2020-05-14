@@ -20,7 +20,8 @@ class _LoginPageState extends State<LoginPage> {
 
     if (form.validate()) {
       form.save();
-     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(section)));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage(section)));
       // Email & password matched our validation rules
       // and are saved to _email and _password fields.
       _performLogin();
@@ -104,7 +105,8 @@ class _LoginPageState extends State<LoginPage> {
         ),
         //onPressed: _submit,
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(section)));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomePage(section)));
         },
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         color: Color(0xFF1B8E99),
@@ -127,7 +129,8 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(RegisterPage.tag);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => RegisterPage()));
         },
         padding: EdgeInsets.fromLTRB(10.0, 7.0, 10.0, 7.0),
         color: Colors.grey,

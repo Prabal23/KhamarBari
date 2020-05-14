@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login_page/home_page.dart';
 import 'package:login_page/login_page.dart';
 import 'dart:async';
@@ -1823,8 +1822,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                             ),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 25),
+                                    child: Row(
+                                      children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(left: 42),
+                                          margin: EdgeInsets.only(left: 0),
                                           child: new Radio(
                                               value: '2',
                                               groupValue: _radioNeedFor,
@@ -1862,18 +1868,20 @@ class _RegisterPageState extends State<RegisterPage> {
                                             //onChanged:(int e) => showDatas(e),
                                             onChanged:
                                                 _handleRadioValueChange4),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange4("3");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Visiting the farm/Farm Inspection',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange4("3");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Visiting the farm/Farm Inspection',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
                                         ),

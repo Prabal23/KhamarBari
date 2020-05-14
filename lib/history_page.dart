@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -141,7 +139,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                                     index % 2 == 0
                                                         ? "Rahim Miah"
                                                         : "Md. Karim",
-                                                    textAlign: TextAlign.center,
+                                                    textAlign: TextAlign.start,
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login_page/home_page.dart';
 import 'package:login_page/login_page.dart';
 import 'dart:async';
@@ -757,1328 +756,1341 @@ class _ProfilePageState extends State<ProfilePage> {
                 physics: BouncingScrollPhysics(),
                 child: Form(
                   key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      //pic(),
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(top: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        //pic(),
+                        Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.only(top: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "View & Edit Profile",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16),
+                                ),
+                                Container(
+                                  width: 70,
+                                  child: Divider(
+                                    color: Color(0xFF1B8E99),
+                                  ),
+                                )
+                              ],
+                            )),
+                        SizedBox(height: 5.0),
+                        Container(
+                          margin: EdgeInsets.only(top: isBalance ? 0 : 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text(
-                                "View & Edit Profile",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 16),
+                              Container(
+                                margin: EdgeInsets.only(right: 0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(left: 0),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Text(
+                                              section == 1
+                                                  ? "Farmer"
+                                                  : section == 2
+                                                      ? "Doctor/Consultant"
+                                                      : "A/I Technician",
+                                              style: TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 12.0,
+                                                  fontWeight: FontWeight.bold)),
+                                          Container(
+                                              height: 20,
+                                              width: 20,
+                                              margin: EdgeInsets.only(left: 5),
+                                              child: Image.asset(
+                                                section == 1
+                                                    ? 'assets/man.png'
+                                                    : section == 2
+                                                        ? 'assets/doctor.png'
+                                                        : 'assets/transportation.png',
+                                                fit: BoxFit.cover,
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Container(
-                                width: 70,
-                                child: Divider(
-                                  color: Color(0xFF1B8E99),
-                                ),
-                              )
-                            ],
-                          )),
-                      SizedBox(height: 5.0),
-                      Container(
-                        margin: EdgeInsets.only(top: isBalance ? 0 : 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(right: 0),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(left: 0),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                            section == 1
-                                                ? "Farmer"
-                                                : section == 2
-                                                    ? "Doctor/Consultant"
-                                                    : "A/I Technician",
+                                child: Row(
+                                  children: <Widget>[
+                                    isBalance == false
+                                        ? Container()
+                                        : Text(
+                                            "Balance : ",
                                             style: TextStyle(
                                                 color: Colors.black54,
-                                                fontSize: 12.0,
-                                                fontWeight: FontWeight.bold)),
-                                        Container(
-                                            height: 20,
-                                            width: 20,
-                                            margin: EdgeInsets.only(left: 5),
-                                            child: Image.asset(
-                                              section == 1
-                                                  ? 'assets/man.png'
-                                                  : section == 2
-                                                      ? 'assets/doctor.png'
-                                                      : 'assets/transportation.png',
-                                              fit: BoxFit.cover,
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Row(
-                                children: <Widget>[
-                                  isBalance == false
-                                      ? Container()
-                                      : Text(
-                                          "Balance : ",
-                                          style: TextStyle(
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.normal,
-                                              fontSize: 12),
-                                        ),
-                                  isBalance == false
-                                      ? Container()
-                                      : SizedBox(width: 5),
-                                  isBalance == false
-                                      ? Container()
-                                      : Container(
-                                          height: 12,
-                                          child:
-                                              Image.asset('assets/taka.png')),
-                                  SizedBox(width: 3),
-                                  isBalance == false
-                                      ? Container()
-                                      : Text(
-                                          "1085.00",
-                                          style: TextStyle(
-                                              color: header,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12),
-                                        ),
-                                  isBalance == false
-                                      ? Container()
-                                      : GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              isBalance = false;
-                                            });
-                                          },
-                                          child: Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Icon(
-                                                Icons.close,
-                                                color: Colors.grey,
-                                                size: 20,
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: 12),
+                                          ),
+                                    isBalance == false
+                                        ? Container()
+                                        : SizedBox(width: 5),
+                                    isBalance == false
+                                        ? Container()
+                                        : Container(
+                                            height: 12,
+                                            child:
+                                                Image.asset('assets/taka.png')),
+                                    SizedBox(width: 3),
+                                    isBalance == false
+                                        ? Container()
+                                        : Text(
+                                            "1085.00",
+                                            style: TextStyle(
+                                                color: header,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12),
+                                          ),
+                                    isBalance == false
+                                        ? Container()
+                                        : GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                isBalance = false;
+                                              });
+                                            },
+                                            child: Container(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Icon(
+                                                  Icons.close,
+                                                  color: Colors.grey,
+                                                  size: 20,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                  isBalance == true
-                                      ? Container()
-                                      : GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              isBalance = true;
-                                            });
-                                          },
-                                          child: Container(
-                                              padding: EdgeInsets.all(5),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  border: Border.all(
-                                                      width: 0.4,
-                                                      color: Colors.grey),
-                                                  color: Colors.white),
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Container(
-                                                      height: 12,
-                                                      child: Image.asset(
-                                                          'assets/taka.png')),
-                                                  SizedBox(width: 5),
-                                                  Text(
-                                                    "Check Balance",
-                                                    style: TextStyle(
-                                                        color: header,
-                                                        fontSize: 11,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ],
-                                              )),
-                                        )
-                                ],
+                                    isBalance == true
+                                        ? Container()
+                                        : GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                isBalance = true;
+                                              });
+                                            },
+                                            child: Container(
+                                                padding: EdgeInsets.all(5),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(5),
+                                                    border: Border.all(
+                                                        width: 0.4,
+                                                        color: Colors.grey),
+                                                    color: Colors.white),
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    Container(
+                                                        height: 12,
+                                                        child: Image.asset(
+                                                            'assets/taka.png')),
+                                                    SizedBox(width: 5),
+                                                    Text(
+                                                      "Check Balance",
+                                                      style: TextStyle(
+                                                          color: header,
+                                                          fontSize: 11,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ],
+                                                )),
+                                          )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      new FutureBuilder<File>(
-                        future: fileImage,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<File> snapshot) {
-                          if (snapshot.connectionState ==
-                                  ConnectionState.done &&
-                              snapshot.data != null) {
-                            return CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              backgroundImage: FileImage(snapshot.data),
-                              //radius: 48.0,
-                              minRadius: 70,
-                              maxRadius: 70,
-                              //child: Image.file(snapshot.data),
-                            );
-                            // return Image.file(
-                            //   snapshot.data,
-                            //   width: 100,
-                            //   height: 100,
-                            // );
+                        new FutureBuilder<File>(
+                          future: fileImage,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<File> snapshot) {
+                            if (snapshot.connectionState ==
+                                    ConnectionState.done &&
+                                snapshot.data != null) {
+                              return CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: FileImage(snapshot.data),
+                                //radius: 48.0,
+                                minRadius: 70,
+                                maxRadius: 70,
+                                //child: Image.file(snapshot.data),
+                              );
+                              // return Image.file(
+                              //   snapshot.data,
+                              //   width: 100,
+                              //   height: 100,
+                              // );
 
-                          } else if (snapshot.error != null) {
-                            return const Text(
-                              'Error Picking Image',
-                              textAlign: TextAlign.center,
-                            );
-                          } else {
-                            return CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              backgroundImage:
-                                  ExactAssetImage('assets/person.png'),
-                              //radius: 48.0,
-                              minRadius: 70,
-                              maxRadius: 70,
-                              //child: Image.asset('assets/person.png'),
-                            );
+                            } else if (snapshot.error != null) {
+                              return const Text(
+                                'Error Picking Image',
+                                textAlign: TextAlign.center,
+                              );
+                            } else {
+                              return CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage:
+                                    ExactAssetImage('assets/person.png'),
+                                //radius: 48.0,
+                                minRadius: 70,
+                                maxRadius: 70,
+                                //child: Image.asset('assets/person.png'),
+                              );
 
-                            // return const Text(
-                            //   'No Image Selected',
-                            //   textAlign: TextAlign.center,
-                            // );
-                          }
-                        },
-                      ),
+                              // return const Text(
+                              //   'No Image Selected',
+                              //   textAlign: TextAlign.center,
+                              // );
+                            }
+                          },
+                        ),
 
-                      //logo,
-                      SizedBox(height: 10.0),
-                      imagePick,
-                      SizedBox(height: 10.0),
-                      name,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      ac,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      email,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      section == 1 ? Container() : degree,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      section == 1
-                          ? Container()
-                          : new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      section == 1 ? Container() : vet,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      section == 1
-                          ? Container()
-                          : new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      section == 1 || section == 3
-                          ? Container()
-                          : Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: new Row(
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                // mainAxisSize: MainAxisSize.max,
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  new Icon(
-                                    Icons.calendar_today,
-                                    color: Colors.black38,
-                                  ),
-                                  new Text(
-                                    '    Vet Reg. Date :',
-                                    style: TextStyle(
-                                        color: Color(0xFF1B8E99),
-                                        fontSize: 17.0),
-                                  ),
-                                  new FlatButton(
-                                      child: new Text(
-                                        '$date',
+                        //logo,
+                        SizedBox(height: 10.0),
+                        imagePick,
+                        SizedBox(height: 10.0),
+                        name,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        ac,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        email,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        section == 1 ? Container() : degree,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        section == 1
+                            ? Container()
+                            : new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        section == 1 ? Container() : vet,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        section == 1
+                            ? Container()
+                            : new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        section == 1 || section == 3
+                            ? Container()
+                            : Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
+                                    ),
+                                child: new Row(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  // mainAxisSize: MainAxisSize.max,
+                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.black38,
+                                    ),
+                                    new Text(
+                                      '    Vet Reg. Date :',
+                                      style: TextStyle(
+                                          color: Color(0xFF1B8E99),
+                                          fontSize: 17.0),
+                                    ),
+                                    new FlatButton(
+                                        child: new Text(
+                                          '$date',
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 17.0),
+                                        ),
+                                        onPressed: () {
+                                          _selectDate(context);
+                                        })
+                                  ],
+                                ),
+                              ),
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        section == 1 || section == 3
+                            ? Container()
+                            : new Divider(color: Colors.grey),
+                        phone,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        bkash,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        Container(
+                          decoration: new BoxDecoration(
+                              //border: new Border.all(color: Colors.black54),
+                              //borderRadius: BorderRadius.circular(15),
+                              ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: new Row(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  // mainAxisSize: MainAxisSize.max,
+                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Icon(
+                                      Icons.location_on,
+                                      color: Colors.black38,
+                                    ),
+                                    new Text(
+                                      section == 1
+                                          ? '    Farm Address :'
+                                          : '    Area interested to provide service :',
+                                      style: TextStyle(
+                                          color: Color(0xFF1B8E99),
+                                          fontSize: 17.0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 25),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(left: 15),
+                                      child: Text(
+                                        'Upazila : ',
                                         style: TextStyle(
                                             color: Colors.black54,
                                             fontSize: 17.0),
                                       ),
-                                      onPressed: () {
-                                        _selectDate(context);
-                                      })
-                                ],
-                              ),
-                            ),
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      section == 1 || section == 3
-                          ? Container()
-                          : new Divider(color: Colors.grey),
-                      phone,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      bkash,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      Container(
-                        decoration: new BoxDecoration(
-                            //border: new Border.all(color: Colors.black54),
-                            //borderRadius: BorderRadius.circular(15),
-                            ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              child: new Row(
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                // mainAxisSize: MainAxisSize.max,
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  new Icon(
-                                    Icons.location_on,
-                                    color: Colors.black38,
-                                  ),
-                                  new Text(
-                                    section == 1
-                                        ? '    Farm Address :'
-                                        : '    Area interested to provide service :',
-                                    style: TextStyle(
-                                        color: Color(0xFF1B8E99),
-                                        fontSize: 17.0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 25),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      'Upazila : ',
-                                      style: TextStyle(
-                                          color: Colors.black54,
-                                          fontSize: 17.0),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton(
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.black87,
-                                          ),
-                                          value: upazila,
-                                          hint: Text("Upazila",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.black87)),
-                                          items: _dropDownUpaItems,
-                                          onChanged: (String value) {
-                                            setState(() {
-                                              upazila = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 25),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      'District : ',
-                                      style: TextStyle(
-                                          color: Colors.black54,
-                                          fontSize: 17.0),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton(
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.black87,
-                                          ),
-                                          value: district,
-                                          hint: Text("District",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.black87)),
-                                          items: _dropDownDistItems,
-                                          onChanged: (String value) {
-                                            setState(() {
-                                              district = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      section == 1
-                          ? Container()
-                          : Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Row(
-                                      // crossAxisAlignment: CrossAxisAlignment.center,
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        new Icon(
-                                          Icons.business_center,
-                                          color: Colors.black38,
-                                        ),
-                                        new Text(
-                                          '    Service Status :',
-                                          style: TextStyle(
-                                              color: Color(0xFF1B8E99),
-                                              fontSize: 17.0),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.only(left: 15),
-                                          child: Text(
-                                            'Status : ',
+                                    Expanded(
+                                      child: Container(
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
                                             style: TextStyle(
-                                                color: Colors.black54,
+                                              fontSize: 17,
+                                              color: Colors.black87,
+                                            ),
+                                            value: upazila,
+                                            hint: Text("Upazila",
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.black87)),
+                                            items: _dropDownUpaItems,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                upazila = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 25),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(left: 15),
+                                      child: Text(
+                                        'District : ',
+                                        style: TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 17.0),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.black87,
+                                            ),
+                                            value: district,
+                                            hint: Text("District",
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.black87)),
+                                            items: _dropDownDistItems,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                district = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        section == 1
+                            ? Container()
+                            : Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
+                                    ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: new Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        // mainAxisSize: MainAxisSize.max,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Icon(
+                                            Icons.business_center,
+                                            color: Colors.black38,
+                                          ),
+                                          new Text(
+                                            '    Service Status :',
+                                            style: TextStyle(
+                                                color: Color(0xFF1B8E99),
                                                 fontSize: 17.0),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.only(left: 15),
+                                            child: Text(
+                                              'Status : ',
+                                              style: TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 17.0),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              child: DropdownButtonHideUnderline(
+                                                child: DropdownButton(
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: Colors.black87,
+                                                  ),
+                                                  value: service,
+                                                  hint: Text("Service",
+                                                      style: TextStyle(
+                                                          fontSize: 17,
+                                                          color: Colors.black87)),
+                                                  items: _dropDownServiceItems,
+                                                  onChanged: (String value) {
+                                                    setState(() {
+                                                      service = value;
+                                                    });
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        section == 1
+                            ? Container()
+                            : new Divider(color: Colors.grey),
+                        section == 1
+                            ? Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
+                                    ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: new Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        // mainAxisSize: MainAxisSize.max,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Icon(
+                                            Icons.home,
+                                            color: Colors.black38,
+                                          ),
+                                          new Text(
+                                            '    Type of farm :',
+                                            style: TextStyle(
+                                                color: Color(0xFF1B8E99),
+                                                fontSize: 17.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '1',
+                                              groupValue: _radioTypeFarm,
+                                              activeColor: Color(0xFF1B8E99),
+                                              //onChanged:(int e) => showDatas(e),
+                                              onChanged:
+                                                  _handleRadioValueChange3),
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _handleRadioValueChange3("1");
+                                                });
+                                              },
+                                              child: Container(
+                                                child: new Text(
+                                                  'Select Farm Type',
+                                                  style: TextStyle(
+                                                      color: Colors.black54,
+                                                      fontSize: 17.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    _radioTypeFarm == "1"
+                                        ? Container(
+                                            margin: EdgeInsets.only(left: 40),
+                                            width:
+                                                MediaQuery.of(context).size.width,
+                                            padding: EdgeInsets.only(left: 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 0.5)),
                                             child: DropdownButtonHideUnderline(
                                               child: DropdownButton(
                                                 style: TextStyle(
                                                   fontSize: 17,
                                                   color: Colors.black87,
                                                 ),
-                                                value: service,
-                                                hint: Text("Service",
+                                                value: farmType,
+                                                hint: Text("Poultry",
                                                     style: TextStyle(
                                                         fontSize: 17,
-                                                        color: Colors.black87)),
-                                                items: _dropDownServiceItems,
+                                                        color: Colors.black54)),
+                                                items: _dropDownFarmItems,
                                                 onChanged: (String value) {
                                                   setState(() {
-                                                    service = value;
+                                                    farmType = value;
                                                   });
                                                 },
                                               ),
                                             ),
+                                          )
+                                        : Container(),
+                                    Container(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.only(left: 25),
+                                            child: new Radio(
+                                                value: '2',
+                                                groupValue: _radioTypeFarm,
+                                                activeColor: Color(0xFF1B8E99),
+                                                //onChanged: (int e) => showDatas(e),
+                                                onChanged:
+                                                    _handleRadioValueChange3),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      section == 1
-                          ? Container()
-                          : new Divider(color: Colors.grey),
-                      section == 1
-                          ? Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Row(
-                                      // crossAxisAlignment: CrossAxisAlignment.center,
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        new Icon(
-                                          Icons.home,
-                                          color: Colors.black38,
-                                        ),
-                                        new Text(
-                                          '    Type of farm :',
-                                          style: TextStyle(
-                                              color: Color(0xFF1B8E99),
-                                              fontSize: 17.0),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '1',
-                                            groupValue: _radioTypeFarm,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange3),
-                                        Expanded(
-                                          child: GestureDetector(
+                                          GestureDetector(
                                             onTap: () {
                                               setState(() {
-                                                _handleRadioValueChange3("1");
+                                                _handleRadioValueChange3("2");
                                               });
                                             },
                                             child: Container(
                                               child: new Text(
-                                                'Select Farm Type',
+                                                'Other',
                                                 style: TextStyle(
                                                     color: Colors.black54,
                                                     fontSize: 17.0),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  _radioTypeFarm == "1"
-                                      ? Container(
-                                          margin: EdgeInsets.only(left: 40),
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          padding: EdgeInsets.only(left: 10),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              border: Border.all(
-                                                  color: Colors.grey,
-                                                  width: 0.5)),
-                                          child: DropdownButtonHideUnderline(
-                                            child: DropdownButton(
-                                              style: TextStyle(
-                                                fontSize: 17,
-                                                color: Colors.black87,
-                                              ),
-                                              value: farmType,
-                                              hint: Text("Poultry",
-                                                  style: TextStyle(
-                                                      fontSize: 17,
-                                                      color: Colors.black54)),
-                                              items: _dropDownFarmItems,
-                                              onChanged: (String value) {
-                                                setState(() {
-                                                  farmType = value;
-                                                });
-                                              },
-                                            ),
-                                          ),
-                                        )
-                                      : Container(),
-                                  Container(
-                                    child: Row(
+                                    _radioTypeFarm == "2"
+                                        ? Container(
+                                            margin: EdgeInsets.only(left: 40),
+                                            width:
+                                                MediaQuery.of(context).size.width,
+                                            padding: EdgeInsets.only(
+                                                left: 10, bottom: 3, top: 3),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 0.5)),
+                                            child: other1)
+                                        : Container()
+                                  ],
+                                ),
+                              )
+                            : section == 2
+                                ? Container(
+                                    decoration: new BoxDecoration(
+                                        //border: new Border.all(color: Colors.black54),
+                                        //borderRadius: BorderRadius.circular(15),
+                                        ),
+                                    child: Column(
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(left: 25),
-                                          child: new Radio(
-                                              value: '2',
-                                              groupValue: _radioTypeFarm,
-                                              activeColor: Color(0xFF1B8E99),
-                                              //onChanged: (int e) => showDatas(e),
-                                              onChanged:
-                                                  _handleRadioValueChange3),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange3("2");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Other',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
-                                            ),
+                                          child: new Row(
+                                            // crossAxisAlignment: CrossAxisAlignment.center,
+                                            // mainAxisSize: MainAxisSize.max,
+                                            // mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new Icon(
+                                                Icons.label_important,
+                                                color: Colors.black38,
+                                              ),
+                                              new Text(
+                                                '    Special on :',
+                                                style: TextStyle(
+                                                    color: Color(0xFF1B8E99),
+                                                    fontSize: 17.0),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  _radioTypeFarm == "2"
-                                      ? Container(
-                                          margin: EdgeInsets.only(left: 40),
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          padding: EdgeInsets.only(
-                                              left: 10, bottom: 3, top: 3),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              border: Border.all(
-                                                  color: Colors.grey,
-                                                  width: 0.5)),
-                                          child: other1)
-                                      : Container()
-                                ],
-                              ),
-                            )
-                          : section == 2
-                              ? Container(
-                                  decoration: new BoxDecoration(
-                                      //border: new Border.all(color: Colors.black54),
-                                      //borderRadius: BorderRadius.circular(15),
-                                      ),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        child: new Row(
-                                          // crossAxisAlignment: CrossAxisAlignment.center,
-                                          // mainAxisSize: MainAxisSize.max,
-                                          // mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            new Icon(
-                                              Icons.label_important,
-                                              color: Colors.black38,
-                                            ),
-                                            new Text(
-                                              '    Special on :',
-                                              style: TextStyle(
-                                                  color: Color(0xFF1B8E99),
-                                                  fontSize: 17.0),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 25),
-                                        child: Row(
-                                          children: <Widget>[
-                                            new Radio(
-                                                value: '1',
-                                                groupValue: _radioGender,
-                                                activeColor: Color(0xFF1B8E99),
-                                                //onChanged:(int e) => showDatas(e),
-                                                onChanged:
-                                                    _handleRadioValueChange),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  _handleRadioValueChange("1");
-                                                });
-                                              },
-                                              child: Container(
-                                                child: new Text(
-                                                  'Dairy',
-                                                  style: TextStyle(
-                                                      color: Colors.black54,
-                                                      fontSize: 17.0),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(left: 42),
-                                              child: new Radio(
-                                                  value: '2',
+                                        Container(
+                                          margin: EdgeInsets.only(left: 25),
+                                          child: Row(
+                                            children: <Widget>[
+                                              new Radio(
+                                                  value: '1',
                                                   groupValue: _radioGender,
-                                                  activeColor:
-                                                      Color(0xFF1B8E99),
-                                                  //onChanged: (int e) => showDatas(e),
+                                                  activeColor: Color(0xFF1B8E99),
+                                                  //onChanged:(int e) => showDatas(e),
                                                   onChanged:
                                                       _handleRadioValueChange),
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  _handleRadioValueChange("2");
-                                                });
-                                              },
-                                              child: Container(
-                                                child: new Text(
-                                                  'Poultry',
-                                                  style: TextStyle(
-                                                      color: Colors.black54,
-                                                      fontSize: 17.0),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      _radioGender == "2"
-                                          ? Container(
-                                              margin: EdgeInsets.only(left: 40),
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              padding:
-                                                  EdgeInsets.only(left: 10),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 0.5)),
-                                              child:
-                                                  DropdownButtonHideUnderline(
-                                                child: DropdownButton(
-                                                  style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.black87,
-                                                  ),
-                                                  value: poultries,
-                                                  hint: Text("Poultry",
-                                                      style: TextStyle(
-                                                          fontSize: 17,
-                                                          color:
-                                                              Colors.black54)),
-                                                  items: _dropDownPoulItems,
-                                                  onChanged: (String value) {
-                                                    setState(() {
-                                                      poultries = value;
-                                                    });
-                                                  },
-                                                ),
-                                              ),
-                                            )
-                                          : Container(),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 25),
-                                        child: Row(
-                                          children: <Widget>[
-                                            new Radio(
-                                                value: '3',
-                                                groupValue: _radioGender,
-                                                activeColor: Color(0xFF1B8E99),
-                                                //onChanged:(int e) => showDatas(e),
-                                                onChanged:
-                                                    _handleRadioValueChange),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  _handleRadioValueChange("3");
-                                                });
-                                              },
-                                              child: Container(
-                                                child: new Text(
-                                                  'Pet Animal',
-                                                  style: TextStyle(
-                                                      color: Colors.black54,
-                                                      fontSize: 17.0),
-                                                ),
-                                              ),
-                                            ),
-                                            new Radio(
-                                                value: '4',
-                                                groupValue: _radioGender,
-                                                activeColor: Color(0xFF1B8E99),
-                                                //onChanged: (int e) => showDatas(e),
-                                                onChanged:
-                                                    _handleRadioValueChange),
-                                            GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  _handleRadioValueChange("4");
-                                                });
-                                              },
-                                              child: Container(
-                                                child: new Text(
-                                                  'Others',
-                                                  style: TextStyle(
-                                                      color: Colors.black54,
-                                                      fontSize: 17.0),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      _radioGender == "4"
-                                          ? Container(
-                                              margin: EdgeInsets.only(left: 40),
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              padding: EdgeInsets.only(
-                                                  left: 10, bottom: 3, top: 3),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 0.5)),
-                                              child: other)
-                                          : Container()
-                                    ],
-                                  ),
-                                )
-                              : Container(
-                                  decoration: new BoxDecoration(
-                                      //border: new Border.all(color: Colors.black54),
-                                      //borderRadius: BorderRadius.circular(15),
-                                      ),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        child: new Row(
-                                          // crossAxisAlignment: CrossAxisAlignment.center,
-                                          // mainAxisSize: MainAxisSize.max,
-                                          // mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            new Icon(
-                                              Icons.label_important,
-                                              color: Colors.black38,
-                                            ),
-                                            new Text(
-                                              '    Special on :',
-                                              style: TextStyle(
-                                                  color: Color(0xFF1B8E99),
-                                                  fontSize: 17.0),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 25),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                new Radio(
-                                                    value: '1',
-                                                    groupValue: _radioTechSp,
-                                                    activeColor:
-                                                        Color(0xFF1B8E99),
-                                                    //onChanged:(int e) => showDatas(e),
-                                                    onChanged:
-                                                        _handleRadioValueChange5),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      _handleRadioValueChange5(
-                                                          "1");
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    child: new Text(
-                                                      'Dairy Insemination',
-                                                      style: TextStyle(
-                                                          color: Colors.black54,
-                                                          fontSize: 17.0),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(children: <Widget>[
-                                              Container(
-                                                margin:
-                                                    EdgeInsets.only(left: 0),
-                                                child: new Radio(
-                                                    value: '2',
-                                                    groupValue: _radioTechSp,
-                                                    activeColor:
-                                                        Color(0xFF1B8E99),
-                                                    //onChanged: (int e) => showDatas(e),
-                                                    onChanged:
-                                                        _handleRadioValueChange5),
-                                              ),
                                               GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    _handleRadioValueChange5(
-                                                        "2");
+                                                    _handleRadioValueChange("1");
                                                   });
                                                 },
                                                 child: Container(
                                                   child: new Text(
-                                                    'Poultry Veccination',
+                                                    'Dairy',
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontSize: 17.0),
                                                   ),
                                                 ),
                                               ),
-                                            ])
-                                          ],
+                                              Container(
+                                                margin: EdgeInsets.only(left: 42),
+                                                child: new Radio(
+                                                    value: '2',
+                                                    groupValue: _radioGender,
+                                                    activeColor:
+                                                        Color(0xFF1B8E99),
+                                                    //onChanged: (int e) => showDatas(e),
+                                                    onChanged:
+                                                        _handleRadioValueChange),
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    _handleRadioValueChange("2");
+                                                  });
+                                                },
+                                                child: Container(
+                                                  child: new Text(
+                                                    'Poultry',
+                                                    style: TextStyle(
+                                                        color: Colors.black54,
+                                                        fontSize: 17.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      section == 1 || section == 3
-                          ? Container()
-                          : Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Row(
-                                      // crossAxisAlignment: CrossAxisAlignment.center,
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
+                                        _radioGender == "2"
+                                            ? Container(
+                                                margin: EdgeInsets.only(left: 40),
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                padding:
+                                                    EdgeInsets.only(left: 10),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(15),
+                                                    border: Border.all(
+                                                        color: Colors.grey,
+                                                        width: 0.5)),
+                                                child:
+                                                    DropdownButtonHideUnderline(
+                                                  child: DropdownButton(
+                                                    style: TextStyle(
+                                                      fontSize: 17,
+                                                      color: Colors.black87,
+                                                    ),
+                                                    value: poultries,
+                                                    hint: Text("Poultry",
+                                                        style: TextStyle(
+                                                            fontSize: 17,
+                                                            color:
+                                                                Colors.black54)),
+                                                    items: _dropDownPoulItems,
+                                                    onChanged: (String value) {
+                                                      setState(() {
+                                                        poultries = value;
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              )
+                                            : Container(),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 25),
+                                          child: Row(
+                                            children: <Widget>[
+                                              new Radio(
+                                                  value: '3',
+                                                  groupValue: _radioGender,
+                                                  activeColor: Color(0xFF1B8E99),
+                                                  //onChanged:(int e) => showDatas(e),
+                                                  onChanged:
+                                                      _handleRadioValueChange),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    _handleRadioValueChange("3");
+                                                  });
+                                                },
+                                                child: Container(
+                                                  child: new Text(
+                                                    'Pet Animal',
+                                                    style: TextStyle(
+                                                        color: Colors.black54,
+                                                        fontSize: 17.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              new Radio(
+                                                  value: '4',
+                                                  groupValue: _radioGender,
+                                                  activeColor: Color(0xFF1B8E99),
+                                                  //onChanged: (int e) => showDatas(e),
+                                                  onChanged:
+                                                      _handleRadioValueChange),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    _handleRadioValueChange("4");
+                                                  });
+                                                },
+                                                child: Container(
+                                                  child: new Text(
+                                                    'Others',
+                                                    style: TextStyle(
+                                                        color: Colors.black54,
+                                                        fontSize: 17.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        _radioGender == "4"
+                                            ? Container(
+                                                margin: EdgeInsets.only(left: 40),
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                padding: EdgeInsets.only(
+                                                    left: 10, bottom: 3, top: 3),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(15),
+                                                    border: Border.all(
+                                                        color: Colors.grey,
+                                                        width: 0.5)),
+                                                child: other)
+                                            : Container()
+                                      ],
+                                    ),
+                                  )
+                                : Container(
+                                    decoration: new BoxDecoration(
+                                        //border: new Border.all(color: Colors.black54),
+                                        //borderRadius: BorderRadius.circular(15),
+                                        ),
+                                    child: Column(
                                       children: <Widget>[
-                                        new Icon(
-                                          Icons.directions_run,
-                                          color: Colors.black38,
+                                        Container(
+                                          child: new Row(
+                                            // crossAxisAlignment: CrossAxisAlignment.center,
+                                            // mainAxisSize: MainAxisSize.max,
+                                            // mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new Icon(
+                                                Icons.label_important,
+                                                color: Colors.black38,
+                                              ),
+                                              new Text(
+                                                '    Special on :',
+                                                style: TextStyle(
+                                                    color: Color(0xFF1B8E99),
+                                                    fontSize: 17.0),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        new Text(
-                                          '    Ready to provide :',
-                                          style: TextStyle(
-                                              color: Color(0xFF1B8E99),
-                                              fontSize: 17.0),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 25),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Row(
+                                                children: <Widget>[
+                                                  new Radio(
+                                                      value: '1',
+                                                      groupValue: _radioTechSp,
+                                                      activeColor:
+                                                          Color(0xFF1B8E99),
+                                                      //onChanged:(int e) => showDatas(e),
+                                                      onChanged:
+                                                          _handleRadioValueChange5),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _handleRadioValueChange5(
+                                                            "1");
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      child: new Text(
+                                                        'Dairy Insemination',
+                                                        style: TextStyle(
+                                                            color: Colors.black54,
+                                                            fontSize: 17.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(children: <Widget>[
+                                                Container(
+                                                  margin:
+                                                      EdgeInsets.only(left: 0),
+                                                  child: new Radio(
+                                                      value: '2',
+                                                      groupValue: _radioTechSp,
+                                                      activeColor:
+                                                          Color(0xFF1B8E99),
+                                                      //onChanged: (int e) => showDatas(e),
+                                                      onChanged:
+                                                          _handleRadioValueChange5),
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      _handleRadioValueChange5(
+                                                          "2");
+                                                    });
+                                                  },
+                                                  child: Container(
+                                                    child: new Text(
+                                                      'Poultry Veccination',
+                                                      style: TextStyle(
+                                                          color: Colors.black54,
+                                                          fontSize: 17.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ])
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '1',
-                                            groupValue: _radioProvide,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange1),
-                                        Expanded(
-                                          child: GestureDetector(
+
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        section == 1 || section == 3
+                            ? Container()
+                            : Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
+                                    ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: new Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        // mainAxisSize: MainAxisSize.max,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Icon(
+                                            Icons.directions_run,
+                                            color: Colors.black38,
+                                          ),
+                                          new Text(
+                                            '    Ready to provide :',
+                                            style: TextStyle(
+                                                color: Color(0xFF1B8E99),
+                                                fontSize: 17.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '1',
+                                              groupValue: _radioProvide,
+                                              activeColor: Color(0xFF1B8E99),
+                                              //onChanged:(int e) => showDatas(e),
+                                              onChanged:
+                                                  _handleRadioValueChange1),
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _handleRadioValueChange1("1");
+                                                });
+                                              },
+                                              child: Container(
+                                                child: new Text(
+                                                  'Consultancy over phone',
+                                                  style: TextStyle(
+                                                      color: Colors.black54,
+                                                      fontSize: 17.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.only(left: 25),
+                                            child: new Radio(
+                                                value: '2',
+                                                groupValue: _radioProvide,
+                                                activeColor: Color(0xFF1B8E99),
+                                                //onChanged: (int e) => showDatas(e),
+                                                onChanged:
+                                                    _handleRadioValueChange1),
+                                          ),
+                                          GestureDetector(
                                             onTap: () {
                                               setState(() {
-                                                _handleRadioValueChange1("1");
+                                                _handleRadioValueChange1("2");
                                               });
                                             },
                                             child: Container(
                                               child: new Text(
-                                                'Consultancy over phone',
+                                                'Firm Inspection',
                                                 style: TextStyle(
                                                     color: Colors.black54,
                                                     fontSize: 17.0),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.only(left: 25),
-                                          child: new Radio(
-                                              value: '2',
-                                              groupValue: _radioProvide,
-                                              activeColor: Color(0xFF1B8E99),
-                                              //onChanged: (int e) => showDatas(e),
-                                              onChanged:
-                                                  _handleRadioValueChange1),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange1("2");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Firm Inspection',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                      section == 1 || section == 3
-                          ? Container()
-                          : new Divider(color: Colors.grey),
-                      section == 1
-                          ? Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Row(
-                                      // crossAxisAlignment: CrossAxisAlignment.center,
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        new Icon(
-                                          Icons.watch,
-                                          color: Colors.black38,
-                                        ),
-                                        new Text(
-                                          '    Need for :',
-                                          style: TextStyle(
-                                              color: Color(0xFF1B8E99),
-                                              fontSize: 17.0),
-                                        ),
-                                      ],
+                        section == 1 || section == 3
+                            ? Container()
+                            : new Divider(color: Colors.grey),
+                        section == 1
+                            ? Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '1',
-                                            groupValue: _radioNeedFor,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange4),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange4("1");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Consultancy',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
-                                            ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: new Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        // mainAxisSize: MainAxisSize.max,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Icon(
+                                            Icons.watch,
+                                            color: Colors.black38,
                                           ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 42),
-                                          child: new Radio(
-                                              value: '2',
+                                          new Text(
+                                            '    Need for :',
+                                            style: TextStyle(
+                                                color: Color(0xFF1B8E99),
+                                                fontSize: 17.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '1',
                                               groupValue: _radioNeedFor,
                                               activeColor: Color(0xFF1B8E99),
-                                              //onChanged: (int e) => showDatas(e),
+                                              //onChanged:(int e) => showDatas(e),
                                               onChanged:
                                                   _handleRadioValueChange4),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange4("2");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Treatment',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange4("1");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Consultancy',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '3',
-                                            groupValue: _radioNeedFor,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange4),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange4("3");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Visiting the farm/Farm Inspection',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.only(left: 0),
+                                            child: new Radio(
+                                                value: '2',
+                                                groupValue: _radioNeedFor,
+                                                activeColor: Color(0xFF1B8E99),
+                                                //onChanged: (int e) => showDatas(e),
+                                                onChanged:
+                                                    _handleRadioValueChange4),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange4("2");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Treatment',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : Container(
-                              decoration: new BoxDecoration(
-                                  //border: new Border.all(color: Colors.black54),
-                                  //borderRadius: BorderRadius.circular(15),
-                                  ),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Row(
-                                      // crossAxisAlignment: CrossAxisAlignment.center,
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        new Icon(
-                                          Icons.watch,
-                                          color: Colors.black38,
-                                        ),
-                                        new Text(
-                                          '    You are available at :',
-                                          style: TextStyle(
-                                              color: Color(0xFF1B8E99),
-                                              fontSize: 17.0),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '1',
-                                            groupValue: _radioavailable,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange2),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange2("1");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Morning',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '3',
+                                              groupValue: _radioNeedFor,
+                                              activeColor: Color(0xFF1B8E99),
+                                              //onChanged:(int e) => showDatas(e),
+                                              onChanged:
+                                                  _handleRadioValueChange4),
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _handleRadioValueChange4("3");
+                                                });
+                                              },
+                                              child: Container(
+                                                child: new Text(
+                                                  'Visiting the farm/Farm Inspection',
+                                                  style: TextStyle(
+                                                      color: Colors.black54,
+                                                      fontSize: 17.0),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 42),
-                                          child: new Radio(
-                                              value: '2',
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                decoration: new BoxDecoration(
+                                    //border: new Border.all(color: Colors.black54),
+                                    //borderRadius: BorderRadius.circular(15),
+                                    ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: new Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        // mainAxisSize: MainAxisSize.max,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Icon(
+                                            Icons.watch,
+                                            color: Colors.black38,
+                                          ),
+                                          new Text(
+                                            '    You are available at :',
+                                            style: TextStyle(
+                                                color: Color(0xFF1B8E99),
+                                                fontSize: 17.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '1',
                                               groupValue: _radioavailable,
                                               activeColor: Color(0xFF1B8E99),
-                                              //onChanged: (int e) => showDatas(e),
+                                              //onChanged:(int e) => showDatas(e),
                                               onChanged:
                                                   _handleRadioValueChange2),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange2("2");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Noon',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange2("1");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Morning',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Container(
+                                            margin: EdgeInsets.only(left: 42),
+                                            child: new Radio(
+                                                value: '2',
+                                                groupValue: _radioavailable,
+                                                activeColor: Color(0xFF1B8E99),
+                                                //onChanged: (int e) => showDatas(e),
+                                                onChanged:
+                                                    _handleRadioValueChange2),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange2("2");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Noon',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '3',
-                                            groupValue: _radioavailable,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange2),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange2("3");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Afternoon',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 28),
-                                          child: new Radio(
-                                              value: '4',
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '3',
                                               groupValue: _radioavailable,
                                               activeColor: Color(0xFF1B8E99),
-                                              //onChanged: (int e) => showDatas(e),
+                                              //onChanged:(int e) => showDatas(e),
                                               onChanged:
                                                   _handleRadioValueChange2),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange2("4");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Night',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange2("3");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Afternoon',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 25),
-                                    child: Row(
-                                      children: <Widget>[
-                                        new Radio(
-                                            value: '5',
-                                            groupValue: _radioavailable,
-                                            activeColor: Color(0xFF1B8E99),
-                                            //onChanged:(int e) => showDatas(e),
-                                            onChanged:
-                                                _handleRadioValueChange2),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _handleRadioValueChange2("5");
-                                            });
-                                          },
-                                          child: Container(
-                                            child: new Text(
-                                              'Any Time',
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 17.0),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 28),
+                                            child: new Radio(
+                                                value: '4',
+                                                groupValue: _radioavailable,
+                                                activeColor: Color(0xFF1B8E99),
+                                                //onChanged: (int e) => showDatas(e),
+                                                onChanged:
+                                                    _handleRadioValueChange2),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange2("4");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Night',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      margin: EdgeInsets.only(left: 25),
+                                      child: Row(
+                                        children: <Widget>[
+                                          new Radio(
+                                              value: '5',
+                                              groupValue: _radioavailable,
+                                              activeColor: Color(0xFF1B8E99),
+                                              //onChanged:(int e) => showDatas(e),
+                                              onChanged:
+                                                  _handleRadioValueChange2),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _handleRadioValueChange2("5");
+                                              });
+                                            },
+                                            child: Container(
+                                              child: new Text(
+                                                'Any Time',
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 17.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
 
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      //birthdate,
-                      SizedBox(height: 0.0),
-                      password,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 0.0),
-                      conpassword,
-                      SizedBox(
-                        height: 0.0,
-                      ),
-                      new Divider(color: Colors.grey),
-                      SizedBox(height: 5.0),
-
-                      Container(
-                        child: new Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(height: 5),
-                            loginButton,
-                          ],
+                        SizedBox(
+                          height: 0.0,
                         ),
-                      ),
-                      SizedBox(height: 25),
-                    ],
+                        new Divider(color: Colors.grey),
+                        //birthdate,
+                        SizedBox(height: 0.0),
+                        password,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 0.0),
+                        conpassword,
+                        SizedBox(
+                          height: 0.0,
+                        ),
+                        new Divider(color: Colors.grey),
+                        SizedBox(height: 5.0),
+
+                        Container(
+                          child: new Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(height: 5),
+                              loginButton,
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 25),
+                      ],
+                    ),
                   ),
                 ),
               ),

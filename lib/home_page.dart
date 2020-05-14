@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:login_page/balance_payment_page.dart';
+import 'package:login_page/comment_farmer_page.dart';
 import 'package:login_page/comment_page.dart';
 import 'package:login_page/doctor_list.dart';
 import 'package:login_page/history_page.dart';
+import 'package:login_page/information_doctor_page.dart';
+import 'package:login_page/information_farmer_page.dart';
+import 'package:login_page/information_tech_page.dart';
 import 'package:login_page/login_page.dart';
+import 'package:login_page/main.dart';
 import 'package:login_page/notification_page.dart';
 import 'package:login_page/profile.dart';
 import 'package:login_page/profile_edit.dart';
@@ -33,9 +39,9 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _children1 = [
     ProfilePage(),
-    HistoryPage(),
+    BalancePaymentPage(),
     DoctorListPage(),
-    CommentPage(),
+    CommentFarmerPage(),
   ];
 
   @override
@@ -79,37 +85,66 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NotificationPage()));
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right: 5),
-                  padding: EdgeInsets.all(5),
-                  child: Stack(
-                    children: <Widget>[
-                      Container(
-                          margin: EdgeInsets.only(top: 5),
-                          child: Icon(Icons.notifications)),
-                      Container(
-                          padding: EdgeInsets.all(2),
-                          margin: EdgeInsets.only(left: 14, bottom: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.redAccent[400],
-                              //border: Border.all(color: Color(0xFF1B8E99), width: 0.5),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Text("50",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)))
-                    ],
-                  ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotificationPage()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.all(5),
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                                margin: EdgeInsets.only(top: 5),
+                                child: Icon(Icons.notifications)),
+                            Container(
+                                padding: EdgeInsets.all(2),
+                                margin: EdgeInsets.only(left: 14, bottom: 10),
+                                decoration: BoxDecoration(
+                                    color: Colors.redAccent[400],
+                                    //border: Border.all(color: Color(0xFF1B8E99), width: 0.5),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Text("50",
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)))
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => section == 1
+                                    ? InformationPage()
+                                    : section == 2
+                                        ? InformationDoctorPage()
+                                        : InformationTechPage()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 5),
+                        padding: EdgeInsets.all(5),
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                                margin: EdgeInsets.only(top: 5),
+                                child: Icon(Icons.help)),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ),
