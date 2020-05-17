@@ -294,11 +294,16 @@ class _CommentFarmerPageState extends State<CommentFarmerPage> {
                                     Icons.mood,
                                     color: Colors.black38,
                                   ),
-                                  new Text(
-                                    '    Are you satisfied with his suggestion?',
-                                    style: TextStyle(
-                                        color: Color(0xFF1B8E99),
-                                        fontSize: 17.0),
+                                  Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.only(left: 15),
+                                      child: Text(
+                                        'Are you satisfied with his suggestion?',
+                                        style: TextStyle(
+                                            color: Color(0xFF1B8E99),
+                                            fontSize: 17.0),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -384,11 +389,16 @@ class _CommentFarmerPageState extends State<CommentFarmerPage> {
                                     Icons.thumb_up,
                                     color: Colors.black38,
                                   ),
-                                  new Text(
-                                    '    Did he able to solve your problem?',
-                                    style: TextStyle(
-                                        color: Color(0xFF1B8E99),
-                                        fontSize: 17.0),
+                                  Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.only(left: 15),
+                                      child: Text(
+                                        'Did he able to solve your problem?',
+                                        style: TextStyle(
+                                            color: Color(0xFF1B8E99),
+                                            fontSize: 17.0),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

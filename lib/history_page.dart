@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:login_page/main.dart';
 
 class HistoryPage extends StatefulWidget {
   static String tag = 'front-page';
@@ -24,16 +25,16 @@ class _HistoryPageState extends State<HistoryPage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(0),
-                    margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                    margin: EdgeInsets.only(left: 0, right: 0, top: 5),
                     decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            color: Colors.black.withOpacity(.2),
-                            //offset: Offset(6.0, 7.0),
-                          ),
-                        ],
+                        // color: Colors.grey[200],
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     blurRadius: 3.0,
+                        //     color: Colors.black.withOpacity(.2),
+                        //     //offset: Offset(6.0, 7.0),
+                        //   ),
+                        // ],
                         //border: Border.all(color: sub_white, width: 0.3),
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: new TabBar(
@@ -47,7 +48,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           text: "Account History",
                         ),
                       ],
-                      indicatorColor: Colors.transparent,
+                      indicatorColor: header,
                       unselectedLabelColor: Colors.black45,
                       unselectedLabelStyle:
                           TextStyle(fontWeight: FontWeight.w300, fontSize: 12),
