@@ -9,6 +9,7 @@ import 'package:login_page/information_farmer_page.dart';
 import 'package:login_page/information_tech_page.dart';
 import 'package:login_page/login_page.dart';
 import 'package:login_page/main.dart';
+import 'package:login_page/menu_page.dart';
 import 'package:login_page/notification_page.dart';
 import 'package:login_page/profile.dart';
 import 'package:login_page/profile_edit.dart';
@@ -38,10 +39,11 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<Widget> _children1 = [
-    ProfilePage(),
+    MenuPage(),
     BalancePaymentPage(),
-    DoctorListPage(),
-    CommentFarmerPage(),
+    ProfilePage(),
+    // DoctorListPage(),
+    // CommentFarmerPage(),
   ];
 
   @override
@@ -149,9 +151,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: widget.section == 1
-          ? _children1[_currentIndex]
-          : _children[_currentIndex],
+      body: Container(
+        color: Colors.white,
+        child: widget.section == 1
+            ? _children1[_currentIndex]
+            : _children[_currentIndex],
+      ),
       //body: body,
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
@@ -174,11 +179,11 @@ class _HomePageState extends State<HomePage> {
               ? [
                   BottomNavigationBarItem(
                     icon: new Icon(
-                      Icons.person_outline,
+                      Icons.menu,
                       size: 19,
                     ),
                     title: new Text(
-                      'Profile',
+                      'Menu',
                       style: TextStyle(fontSize: 12),
                     ),
                   ),
@@ -193,25 +198,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.list,
+                    icon: new Icon(
+                      Icons.person_outline,
                       size: 19,
                     ),
-                    title: Text(
-                      "Doctor's List",
+                    title: new Text(
+                      'Profile',
                       style: TextStyle(fontSize: 12),
                     ),
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.chat_bubble_outline,
-                      size: 19,
-                    ),
-                    title: Text(
-                      'Comment',
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  )
                 ]
               : [
                   BottomNavigationBarItem(

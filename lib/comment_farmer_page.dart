@@ -209,7 +209,34 @@ class _CommentFarmerPageState extends State<CommentFarmerPage> {
     return Scaffold(
       //key: scaffoldKey,
       backgroundColor: Colors.white,
-      // body: Center(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(0xFF1B8E99)),
+        //automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Farmer's",
+                        style: TextStyle(fontSize: 17, color: Colors.black54)),
+                    Container(
+                      padding:
+                          EdgeInsets.only(top: 5, bottom: 5, right: 5, left: 5),
+                      child: Text("Comment",
+                          style: TextStyle(
+                              fontSize: 17, color: Color(0xFF1B8E99))),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Container(
         child: Padding(
           padding: const EdgeInsets.only(left: 24.0, right: 24.0),

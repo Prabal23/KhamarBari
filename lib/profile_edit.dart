@@ -784,140 +784,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 )
                               ],
                             )),
-                        SizedBox(height: 5.0),
-                        Container(
-                          margin: EdgeInsets.only(top: isBalance ? 0 : 5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(right: 0),
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      margin: EdgeInsets.only(left: 0),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Text(
-                                              section == 1
-                                                  ? "Farmer"
-                                                  : section == 2
-                                                      ? "Doctor/Consultant"
-                                                      : "A/I Technician",
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 12.0,
-                                                  fontWeight: FontWeight.bold)),
-                                          Container(
-                                              height: 20,
-                                              width: 20,
-                                              margin: EdgeInsets.only(left: 5),
-                                              child: Image.asset(
-                                                section == 1
-                                                    ? 'assets/man.png'
-                                                    : section == 2
-                                                        ? 'assets/doctor.png'
-                                                        : 'assets/transportation.png',
-                                                fit: BoxFit.cover,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    isBalance == false
-                                        ? Container()
-                                        : Text(
-                                            "Balance : ",
-                                            style: TextStyle(
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.normal,
-                                                fontSize: 12),
-                                          ),
-                                    isBalance == false
-                                        ? Container()
-                                        : SizedBox(width: 5),
-                                    isBalance == false
-                                        ? Container()
-                                        : Container(
-                                            height: 12,
-                                            child:
-                                                Image.asset('assets/taka.png')),
-                                    SizedBox(width: 3),
-                                    isBalance == false
-                                        ? Container()
-                                        : Text(
-                                            "1085.00",
-                                            style: TextStyle(
-                                                color: header,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12),
-                                          ),
-                                    isBalance == false
-                                        ? Container()
-                                        : GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                isBalance = false;
-                                              });
-                                            },
-                                            child: Container(
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Icon(
-                                                  Icons.close,
-                                                  color: Colors.grey,
-                                                  size: 20,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                    isBalance == true
-                                        ? Container()
-                                        : GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                isBalance = true;
-                                              });
-                                            },
-                                            child: Container(
-                                                padding: EdgeInsets.all(5),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(5),
-                                                    border: Border.all(
-                                                        width: 0.4,
-                                                        color: Colors.grey),
-                                                    color: Colors.white),
-                                                child: Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                        height: 12,
-                                                        child: Image.asset(
-                                                            'assets/taka.png')),
-                                                    SizedBox(width: 5),
-                                                    Text(
-                                                      "Check Balance",
-                                                      style: TextStyle(
-                                                          color: header,
-                                                          fontSize: 11,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ],
-                                                )),
-                                          )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        SizedBox(height: 10),
                         new FutureBuilder<File>(
                           future: fileImage,
                           builder: (BuildContext context,
@@ -1211,7 +1078,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                           Expanded(
                                             child: Container(
-                                              child: DropdownButtonHideUnderline(
+                                              child:
+                                                  DropdownButtonHideUnderline(
                                                 child: DropdownButton(
                                                   style: TextStyle(
                                                     fontSize: 17,
@@ -1221,7 +1089,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   hint: Text("Service",
                                                       style: TextStyle(
                                                           fontSize: 17,
-                                                          color: Colors.black87)),
+                                                          color:
+                                                              Colors.black87)),
                                                   items: _dropDownServiceItems,
                                                   onChanged: (String value) {
                                                     setState(() {
@@ -1306,8 +1175,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                     _radioTypeFarm == "1"
                                         ? Container(
                                             margin: EdgeInsets.only(left: 40),
-                                            width:
-                                                MediaQuery.of(context).size.width,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
                                             padding: EdgeInsets.only(left: 10),
                                             decoration: BoxDecoration(
                                                 borderRadius:
@@ -1370,8 +1240,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                     _radioTypeFarm == "2"
                                         ? Container(
                                             margin: EdgeInsets.only(left: 40),
-                                            width:
-                                                MediaQuery.of(context).size.width,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
                                             padding: EdgeInsets.only(
                                                 left: 10, bottom: 3, top: 3),
                                             decoration: BoxDecoration(
@@ -1419,14 +1290,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                               new Radio(
                                                   value: '1',
                                                   groupValue: _radioGender,
-                                                  activeColor: Color(0xFF1B8E99),
+                                                  activeColor:
+                                                      Color(0xFF1B8E99),
                                                   //onChanged:(int e) => showDatas(e),
                                                   onChanged:
                                                       _handleRadioValueChange),
                                               GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    _handleRadioValueChange("1");
+                                                    _handleRadioValueChange(
+                                                        "1");
                                                   });
                                                 },
                                                 child: Container(
@@ -1439,7 +1312,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 ),
                                               ),
                                               Container(
-                                                margin: EdgeInsets.only(left: 42),
+                                                margin:
+                                                    EdgeInsets.only(left: 42),
                                                 child: new Radio(
                                                     value: '2',
                                                     groupValue: _radioGender,
@@ -1452,7 +1326,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                               GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    _handleRadioValueChange("2");
+                                                    _handleRadioValueChange(
+                                                        "2");
                                                   });
                                                 },
                                                 child: Container(
@@ -1469,7 +1344,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         _radioGender == "2"
                                             ? Container(
-                                                margin: EdgeInsets.only(left: 40),
+                                                margin:
+                                                    EdgeInsets.only(left: 40),
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
@@ -1477,7 +1353,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     EdgeInsets.only(left: 10),
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(15),
+                                                        BorderRadius.circular(
+                                                            15),
                                                     border: Border.all(
                                                         color: Colors.grey,
                                                         width: 0.5)),
@@ -1492,8 +1369,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     hint: Text("Poultry",
                                                         style: TextStyle(
                                                             fontSize: 17,
-                                                            color:
-                                                                Colors.black54)),
+                                                            color: Colors
+                                                                .black54)),
                                                     items: _dropDownPoulItems,
                                                     onChanged: (String value) {
                                                       setState(() {
@@ -1511,14 +1388,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                               new Radio(
                                                   value: '3',
                                                   groupValue: _radioGender,
-                                                  activeColor: Color(0xFF1B8E99),
+                                                  activeColor:
+                                                      Color(0xFF1B8E99),
                                                   //onChanged:(int e) => showDatas(e),
                                                   onChanged:
                                                       _handleRadioValueChange),
                                               GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    _handleRadioValueChange("3");
+                                                    _handleRadioValueChange(
+                                                        "3");
                                                   });
                                                 },
                                                 child: Container(
@@ -1533,14 +1412,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                               new Radio(
                                                   value: '4',
                                                   groupValue: _radioGender,
-                                                  activeColor: Color(0xFF1B8E99),
+                                                  activeColor:
+                                                      Color(0xFF1B8E99),
                                                   //onChanged: (int e) => showDatas(e),
                                                   onChanged:
                                                       _handleRadioValueChange),
                                               GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    _handleRadioValueChange("4");
+                                                    _handleRadioValueChange(
+                                                        "4");
                                                   });
                                                 },
                                                 child: Container(
@@ -1557,15 +1438,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         _radioGender == "4"
                                             ? Container(
-                                                margin: EdgeInsets.only(left: 40),
+                                                margin:
+                                                    EdgeInsets.only(left: 40),
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
                                                 padding: EdgeInsets.only(
-                                                    left: 10, bottom: 3, top: 3),
+                                                    left: 10,
+                                                    bottom: 3,
+                                                    top: 3),
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(15),
+                                                        BorderRadius.circular(
+                                                            15),
                                                     border: Border.all(
                                                         color: Colors.grey,
                                                         width: 0.5)),
@@ -1625,7 +1510,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                       child: new Text(
                                                         'Dairy Insemination',
                                                         style: TextStyle(
-                                                            color: Colors.black54,
+                                                            color:
+                                                                Colors.black54,
                                                             fontSize: 17.0),
                                                       ),
                                                     ),
@@ -1822,7 +1708,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                               ),
                                             ),
                                           ),
-                                          
                                         ],
                                       ),
                                     ),
@@ -1861,7 +1746,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Container(
                                       margin: EdgeInsets.only(left: 25),
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: <Widget>[
                                           new Radio(
                                               value: '3',
